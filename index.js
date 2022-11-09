@@ -69,10 +69,11 @@ let generateImageRequest = async prompt => {
         prompt: prompt,
         n: 1,
         size: "512x512",
-        response_format: 'url'
+        response_format: 'b64_json'
     });
 
     // downloadFile(response.data.data[0].url);
+    // console.log(response.data.data[0].b64_json)
     let image_url = response.data.data;
     return image_url;
 };

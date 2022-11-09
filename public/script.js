@@ -39,6 +39,7 @@ async function loadImage() {
         // text.style.fontSize = "x-large";
         // document.body.appendChild(text);
 
+
         document.body.removeChild(load);
         items.forEach((n, index) => {
 
@@ -53,11 +54,12 @@ async function loadImage() {
 
             const img = document.createElement("img");
             img.style.display = 'flex';
-            img.src = n.url;
+            img.src = `data:image/png;base64, ${n.b64_json}`;
+            // console.log(n.b64_json)
 
             const button = document.createElement("button");
             button.textContent = 'rescatar de la basura ♻️';
-            button.addEventListener('click', async event => exportPNG(n.url, `${names}-${index}.png`));
+            button.addEventListener('click', async event => exportPNG(n.b64_json, `${names}-${index}.png`));
 
             document.body.append(dash, number, img, button);
         });
@@ -76,8 +78,13 @@ async function exportPNG(data, name = `entre-la-basura.png`) {
     // const buffer = await response.buffer();
     // console.log(buffer)
 
-    let url = await fetch(data);
-    let blob_object = await url.blob();
+    const base64Response = await fetch(`data:image/png;base64,${data}`);
+    const blob_object = await base64Response.blob();
+
+
+    // let url = await fetch(data);
+    // let blob_object = await url.blob();
+
     let blob = await window.URL.createObjectURL(blob_object);
     const anchor = document.createElement('a');
     anchor.style.display = 'none';
