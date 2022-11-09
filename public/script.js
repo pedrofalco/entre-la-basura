@@ -2,7 +2,7 @@ let load;
 document.getElementById('button').addEventListener('click', async event => {
 
     load = document.createElement("p");
-    load.textContent = `Ahora busco y vuelvo, dame unos segunditos 👍( ͡▀̿ ̿ ͜ʖ ͡▀̿ ̿ 👍)`;
+    load.textContent = `Ahora lo busco y vuelvo, dame unos 10 segunditos aprox o por ahí menos 👍( ͡▀̿ ̿ ͜ʖ ͡▀̿ ̿ 👍)`;
     load.style.fontWeight = 'bold';
     load.style.fontSize = "xx-large";
 
@@ -59,6 +59,7 @@ async function loadImage() {
 
             const button = document.createElement("button");
             button.textContent = 'rescatar de la basura ♻️';
+            button.style.marginLeft = '0px';
             button.addEventListener('click', async event => exportPNG(n.b64_json, `${names}-${index}.png`));
 
             document.body.append(dash, number, img, button);
@@ -73,17 +74,8 @@ async function loadImage() {
 };
 
 async function exportPNG(data, name = `entre-la-basura.png`) {
-    // console.log(data)
-    // const response = await fetch(data);
-    // const buffer = await response.buffer();
-    // console.log(buffer)
-
     const base64Response = await fetch(`data:image/png;base64,${data}`);
     const blob_object = await base64Response.blob();
-
-
-    // let url = await fetch(data);
-    // let blob_object = await url.blob();
 
     let blob = await window.URL.createObjectURL(blob_object);
     const anchor = document.createElement('a');
