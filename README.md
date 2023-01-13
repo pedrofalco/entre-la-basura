@@ -1,6 +1,5 @@
 ## Basurero 🗑
 
-<<<<<<< HEAD
 `ES`
 
 Un ejercicio para [UR](https://www.instagram.com/urniversidad/) que consiste en una aplicacion web que se conecta a la API de Google para buscar entre la carpeta de spam de mi mail que es usado como prompt para generar una imagen con la API de [DALL-E](https://openai.com/dall-e-2/).
